@@ -13,21 +13,23 @@ function ProveedorDatos(props) {
   const [verregistro, setverregistro] = useState(false);
   const [ano, setano] = useState(0);
   const [mes, setmes] = useState("");
-  const eliminaritem =async(id)=>{
-    const eliminar = await axios.post(url+'eliminar',{
-      id
-    })
-    console.log(eliminar)
-    setlista(eliminar.data)
-  }
+  const [totaldolares, settotaldolares] = useState(0);
+  const [totalbolivares,settotalbolivares] = useState(0)
+  const eliminaritem = async (id) => {
+    const eliminar = await axios.post(url + "eliminar", {
+      id,
+    });
+    console.log(eliminar);
+    setlista(eliminar.data);
+  };
   const buscarregistros = async () => {
     const buscar = await axios.post(url + "buscar", {
       ano,
       mes,
     });
-    if(buscar.data.length === 0){
-      alert('no hay registros')
-      return
+    if (buscar.data.length === 0) {
+      alert("no hay registros");
+      return;
     }
     console.log(buscar.data);
     setlista(buscar.data);
@@ -48,7 +50,12 @@ function ProveedorDatos(props) {
       dinerobolivar: bolivar ? monto : tasa * monto,
       dinerodolar: dolar ? monto : monto / tasa,
     });
-    console.log(enviar.data);
+    console.log(enviar);
+    if (enviar.status === 200) {
+      alert("registros exitoso");
+    } else {
+      alert("error de registro");
+    }
   };
   const activarbolivardolar = async (numero) => {
     if (numero === 1) {
@@ -59,9 +66,25 @@ function ProveedorDatos(props) {
       setbolivar(false);
     }
   };
+
+  const sumartotales = async () => {
+    let sumadolar = 0;
+    let sumabolivar = 0;
+    lista.map((e) => {
+      sumabolivar = sumabolivar + e.dinerobolivar;
+      sumadolar = sumadolar + e.dinerodolar;
+    });
+    settotaldolares(sumadolar);
+    settotalbolivares(sumabolivar)
+  };
+  useEffect(() => {
+    sumartotales();
+  }, [lista]);
   return (
     <ContextoGlobal.Provider
       value={{
+        totalbolivares,
+        totaldolares,
         eliminaritem,
         lista,
         setlista,
