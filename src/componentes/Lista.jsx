@@ -10,8 +10,8 @@ function Lista() {
               <div className="visores">
 
                   <h3>Registros: {lista.length} </h3>
-                  <h4>total dolares $: {totaldolares}</h4>
-                  <h4>total bolivares Bs: {totalbolivares}</h4>
+                  <h4>total dolares $: {totaldolares.toFixed(2)}</h4>
+                  <h4>total bolivares Bs: {totalbolivares.toFixed(2)}</h4>
 
               </div>
       
