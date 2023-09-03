@@ -2,13 +2,13 @@ import { useContext } from "react";
 import { ContextoGlobal } from "../contexto/contexto";
 
 function VerRegistros() {
-    const{verregistro,setverregistro} = useContext(ContextoGlobal)
+    const{verregistro,setverregistro, setmes,setano, buscarregistros} = useContext(ContextoGlobal)
 return <>
         <div className="card">
             <button
                 onClick={()=> setverregistro(false)}
             >ocultar registros</button>
-            <input type="number" placeholder="año.." />
+            <input type="number" placeholder="año.." onChange={e=> setano(e.target.value)} />
             <select
           name=""
           id=""
@@ -28,7 +28,7 @@ return <>
           <option value="noviembre">noviembre</option>
           <option value="diciembre">diciembre</option>
         </select>
-        <button>aceptar</button>
+        <button onClick={buscarregistros} >aceptar</button>
         </div>
   </>;
 }
