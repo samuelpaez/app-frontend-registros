@@ -9,9 +9,9 @@ function Lista() {
       <div className="card">
                   <h3>Registros: {lista.length} </h3>
       {
-        lista.map((e,i)=> <div key={i} className="card"> 
-          <p>Bs: {e.dinerobolivar}</p>
-          <p>$:{e.dinerodolar}</p>
+        lista.map((e,i)=> <div key={i} className="card item-lista"> 
+          <p>Bs: {e.dinerobolivar.toFixed(2)}</p>
+          <p>$:{e.dinerodolar.toFixed(2)}</p>
           <button onClick={()=> eliminaritem(e._id)}>eliminar</button>
           </div>)
       }

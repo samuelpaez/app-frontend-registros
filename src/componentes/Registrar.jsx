@@ -16,6 +16,7 @@ function Registrar() {
   return (
     <>
       <div className="card">
+        <h1>Registros</h1>
         <input
           type="number"
           placeholder="tasa"

@@ -4,24 +4,31 @@ body {
 
 input {
   padding: 10px;
+  font-size: 35px;
 }
 button {
+  height: 50px;
   border: none;
+  border-radius: 5px;
   padding: 10px;
   cursor: pointer;
   margin-top: 10px;
-  background: rgb(37, 33, 33);
+  background: rgb(43, 39, 102);
   color: white;
   font-weight: bold;
   margin: 8px 5px 25px 5px;
 }
+button:hover{
+  opacity: 0.8;
+}
 select {
   padding: 10px;
+  font-size: 40px;
 }
 
 .card {
   padding: 5px;
-  border: 1px solid black;
+  border: 1px solid rgb(190, 170, 170);
   border-radius: 5px;
   margin-bottom: 20px;
   display: flex;
@@ -31,4 +38,14 @@ select {
 .activado {
   background: red;
   color: white;
+}
+
+.item-lista p{
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.item-lista *{
+  padding: 0;
+  margin: 0;
 }

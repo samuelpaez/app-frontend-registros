@@ -3,8 +3,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 export const ContextoGlobal = createContext();
 
 function ProveedorDatos(props) {
-  let url = "https://app-registros-backend.onrender.com/";
-  let url2 = "http://localhost:3000/";
+  let url2 = "https://app-registros-backend.onrender.com/";
+  let url = "http://localhost:3000/";
   const [lista, setlista] = useState([]);
   const [monto, setmonto] = useState(0);
   const [tasa, settasa] = useState(0);
@@ -25,6 +25,10 @@ function ProveedorDatos(props) {
       ano,
       mes,
     });
+    if(buscar.data.length === 0){
+      alert('no hay registros')
+      return
+    }
     console.log(buscar.data);
     setlista(buscar.data);
   };
